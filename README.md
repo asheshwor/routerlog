@@ -9,7 +9,7 @@ library(XML)
 library(httr)
 ```
 
-# Router specific parameters
+## Router specific parameters
 
 We need the exact url for the devices page. This varies by router; please modify accordingly. Admin username and password are needed to authenticate access. Please note that if you are storing your login credentials in plaintext whith this code; use a temporary password or change your password afterwards.
 
@@ -19,7 +19,7 @@ user.name <- "adminUserName"
 user.password <- "adminPassword" #remember to change your password afterwards
 ```
 
-# Get the table
+## Get the table
 
 Again, this will depend on the html structure of the devices page. Please modify accordingly.
 
