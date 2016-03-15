@@ -60,3 +60,19 @@ dev.table #display table on console
 
 Voilà!
 
+
+# Handling errors
+
+In case the url returns error, the above code will return a blank table. The following code catches the error and reports error details.
+
+```{r}
+dev.html <- GET(dev.url, authenticate(user.name, user.password)) #get the html
+if (http_error(dev.html)) print(http_status(dev.url)) else
+  dev.html <- htmlParse(dev.html)
+dev.html.table <- getNodeSet(dev.html, "//table")[[2]] #access devices table
+dev.table <- readHTMLTable(dev.html.table, skip.rows = 1,
+                     header = c("sno","ip","name", "mac"),
+                     colClasses = c("numeric","character","character", "character"),
+                     trim = TRUE, stringsAsFactors = FALSE)
+dev.table #display table on console
+```
