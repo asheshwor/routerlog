@@ -26,6 +26,15 @@ Again, this will depend on the html structure of the devices page. Please modify
 ```R
 dev.html <- GET(dev.url, authenticate(user.name, user.password)) #get the html
 dev.html <- htmlParse(dev.html)
+dev.html.table <- readHTMLTable(dev.html) #this also works
+length(dev.html.table)
+dev.table <- dev.html.table[[5]]
+dev.table #display table on console
+```
+
+Alternative version,
+
+```R
 dev.html.table <- getNodeSet(dev.html, "//table")[[2]] #access devices table
 dev.table <- readHTMLTable(dev.html.table, skip.rows = 1,
                      header = c("sno","ip","name", "mac"),
